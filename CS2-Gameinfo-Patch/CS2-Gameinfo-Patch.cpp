@@ -30,6 +30,10 @@ static bool UpdateFile(std::string file)
     const std::string pattern = "Game_LowViolence";
     const std::string metamodEntry = "\n			Game	csgo/addons/metamod";
 
+    if (std::filesystem::exists(file + ".bak"))
+    {
+        std::filesystem::remove(file + ".bak");
+    }
     std::filesystem::copy(file, file + ".bak");
     std::ifstream inputFile(file);
 
